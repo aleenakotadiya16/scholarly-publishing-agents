@@ -1,0 +1,277 @@
+# Journal Requirements Database
+# Example entries for common journals in medical/health research
+# Last updated: January 2026
+# ALWAYS verify current requirements on the journal's website
+
+journals:
+  jama:
+    name: "JAMA"
+    full_name: "Journal of the American Medical Association"
+    publisher: "American Medical Association"
+    issn_print: "0098-7484"
+    issn_online: "1538-3598"
+    impact_factor: 120.7  # approximate, verify current
+    indexed_in: ["PubMed", "Scopus", "Web of Science"]
+
+    manuscript:
+      word_limit: 3000  # for original investigations
+      abstract_limit: 350
+      abstract_type: "structured"  # Importance, Objective, Design/Setting/Participants, Main Outcomes, Results, Conclusions
+      reference_limit: 40
+      keyword_count: "3-5"
+      reference_style: "AMA (superscript numbered)"
+      line_numbering: true
+      double_spacing: true
+
+    figures:
+      max_count: 5  # figures + tables combined
+      resolution_dpi: 300
+      formats: ["TIFF", "EPS", "PDF"]
+
+    cover_letter:
+      required: true
+      special_requirements:
+        - "Word count"
+        - "Author contributions"
+        - "Data sharing statement"
+
+    open_access:
+      model: "hybrid"
+      apc_usd: 6000  # approximate for OA option
+
+  bmj:
+    name: "BMJ"
+    full_name: "The BMJ (British Medical Journal)"
+    publisher: "BMJ Publishing Group"
+    issn_print: "0959-8138"
+    issn_online: "1756-1833"
+    impact_factor: 105.7  # approximate
+    indexed_in: ["PubMed", "Scopus", "Web of Science"]
+
+    manuscript:
+      word_limit: 4000  # for research articles
+      abstract_limit: 250
+      abstract_type: "structured"  # Objective, Design, Setting, Participants, Main Outcome, Results, Conclusions
+      reference_limit: 50
+      keyword_count: "3-6"
+      reference_style: "Vancouver (numbered)"
+      line_numbering: true
+      double_spacing: true
+
+    figures:
+      max_count: 6
+      resolution_dpi: 300
+      formats: ["TIFF", "EPS", "PDF", "JPEG"]
+
+    cover_letter:
+      required: true
+      special_requirements:
+        - "Structured format with specific headings"
+        - "Transparency declaration"
+
+    open_access:
+      model: "full_oa"
+      apc_usd: 4500  # approximate
+
+  the_lancet:
+    name: "The Lancet"
+    full_name: "The Lancet"
+    publisher: "Elsevier"
+    issn_print: "0140-6736"
+    issn_online: "1474-547X"
+    impact_factor: 168.9  # approximate
+    indexed_in: ["PubMed", "Scopus", "Web of Science"]
+
+    manuscript:
+      word_limit: 3500  # for articles
+      abstract_limit: 300
+      abstract_type: "structured"  # Background, Methods, Findings, Interpretation, Funding
+      reference_limit: 30  # for articles
+      keyword_count: "not specified"
+      reference_style: "Vancouver (numbered)"
+      line_numbering: true
+      double_spacing: true
+
+    figures:
+      max_count: 5
+      resolution_dpi: 300
+      formats: ["TIFF", "EPS"]
+
+    cover_letter:
+      required: true
+      special_requirements:
+        - "AI disclosure in cover letter"
+        - "Statement of no patient data processed by AI"
+
+    open_access:
+      model: "hybrid"
+      apc_usd: 6300  # approximate for OA option
+
+  nature:
+    name: "Nature"
+    full_name: "Nature"
+    publisher: "Springer Nature"
+    issn_print: "0028-0836"
+    issn_online: "1476-4687"
+    impact_factor: 64.8  # approximate
+    indexed_in: ["PubMed", "Scopus", "Web of Science"]
+
+    manuscript:
+      word_limit: 5000  # for articles (excluding methods, references, figure legends)
+      abstract_limit: 150  # single paragraph
+      abstract_type: "unstructured"
+      reference_limit: 50
+      keyword_count: "not required"
+      reference_style: "Nature (numbered, bracketed)"
+      line_numbering: true
+      double_spacing: true
+
+    figures:
+      max_count: 8  # for articles
+      resolution_dpi: 300
+      formats: ["TIFF", "EPS", "PDF"]
+
+    cover_letter:
+      required: true
+      special_requirements:
+        - "Brief — focus on significance"
+        - "No more than 1 page"
+
+    open_access:
+      model: "hybrid"
+      apc_usd: 11690  # approximate for OA option
+
+  science:
+    name: "Science"
+    full_name: "Science"
+    publisher: "American Association for the Advancement of Science (AAAS)"
+    issn_print: "0036-8075"
+    issn_online: "1095-9203"
+    impact_factor: 56.9  # approximate
+    indexed_in: ["PubMed", "Scopus", "Web of Science"]
+
+    manuscript:
+      word_limit: 4500  # for research articles
+      abstract_limit: 125
+      abstract_type: "unstructured"
+      reference_limit: 55
+      keyword_count: "not required"
+      reference_style: "Science (numbered)"
+      line_numbering: true
+      double_spacing: true
+
+    figures:
+      max_count: 6
+      resolution_dpi: 300
+      formats: ["EPS", "PDF"]
+
+    cover_letter:
+      required: true
+      special_requirements:
+        - "Brief cover letter"
+        - "State significance clearly"
+
+    open_access:
+      model: "hybrid"
+      apc_usd: 5000  # approximate
+
+  plos_one:
+    name: "PLOS ONE"
+    full_name: "PLOS ONE"
+    publisher: "Public Library of Science"
+    issn_online: "1932-6203"
+    impact_factor: 3.7  # approximate
+    indexed_in: ["PubMed", "Scopus", "Web of Science"]
+
+    manuscript:
+      word_limit: null  # no strict word limit
+      abstract_limit: 300
+      abstract_type: "unstructured"
+      reference_limit: null  # no strict limit
+      keyword_count: "not required"
+      reference_style: "Vancouver (numbered)"
+      line_numbering: true
+      double_spacing: true
+
+    figures:
+      max_count: null  # no strict limit
+      resolution_dpi: 300
+      formats: ["TIFF", "EPS", "PDF"]
+
+    cover_letter:
+      required: true
+      special_requirements:
+        - "Data availability statement in cover letter"
+        - "AI disclosure in cover letter"
+
+    open_access:
+      model: "full_oa"
+      apc_usd: 1931  # approximate
+
+    notes: "Evaluates technical soundness, not perceived impact. Broad scope."
+
+  health_economics:
+    name: "Health Economics"
+    full_name: "Health Economics"
+    publisher: "Wiley"
+    issn_print: "1057-9230"
+    issn_online: "1099-1050"
+    impact_factor: 3.2  # approximate
+    indexed_in: ["PubMed", "Scopus", "Web of Science"]
+
+    manuscript:
+      word_limit: 8000  # generous for economic evaluations
+      abstract_limit: 200
+      abstract_type: "unstructured"
+      reference_limit: null
+      keyword_count: "3-6"
+      reference_style: "Harvard (author-year)"
+      line_numbering: false
+      double_spacing: true
+
+    figures:
+      max_count: null
+      resolution_dpi: 300
+      formats: ["TIFF", "EPS", "JPEG"]
+
+    cover_letter:
+      required: true
+
+    open_access:
+      model: "hybrid"
+      apc_usd: 4200  # approximate for OA option
+
+    notes: "Core health economics journal. Good fit for CEA, CUA, CBA, BIA studies."
+
+  value_in_health:
+    name: "Value in Health"
+    full_name: "Value in Health"
+    publisher: "Elsevier (ISPOR)"
+    issn_print: "1098-3015"
+    issn_online: "1524-4733"
+    impact_factor: 5.7  # approximate
+    indexed_in: ["PubMed", "Scopus", "Web of Science"]
+
+    manuscript:
+      word_limit: 5000
+      abstract_limit: 350
+      abstract_type: "structured"
+      reference_limit: 50
+      keyword_count: "3-6"
+      reference_style: "Vancouver (numbered)"
+      line_numbering: true
+      double_spacing: true
+
+    figures:
+      max_count: 6
+      resolution_dpi: 300
+      formats: ["TIFF", "EPS"]
+
+    cover_letter:
+      required: true
+
+    open_access:
+      model: "hybrid"
+      apc_usd: 3500  # approximate
+
+    notes: "ISPOR journal. Strong fit for health economics, outcomes research, pharmacoeconomics."

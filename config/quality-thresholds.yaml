@@ -1,0 +1,131 @@
+# Quality Thresholds Configuration
+# Configurable thresholds for automated quality checks
+# Adjust these based on your specific needs and journal requirements
+
+citation_verification:
+  # Minimum percentage of references that must be VERIFIED
+  minimum_verification_rate: 95.0
+
+  # Maximum tolerance for different statuses
+  max_not_found_percentage: 0.0  # zero tolerance
+  max_suspicious_percentage: 0.0  # zero tolerance — all must be human-reviewed
+  max_partially_verified_percentage: 5.0  # must be corrected before submission
+
+  # Citation freshness
+  warn_if_median_age_exceeds_years: 7  # WARN-06 if median reference age > 7 years
+  warn_if_percent_older_than: 50  # WARN-06 if >50% of refs older than threshold
+
+  # Self-citation
+  self_citation_warn_threshold: 15.0  # WARN-04 if self-citation rate > 15%
+  self_citation_flag_threshold: 25.0  # Flag for editor if > 25%
+
+readability:
+  # Flesch-Kincaid Grade Level targets by audience
+  targets:
+    general_public:
+      flesch_kincaid_grade: { min: 6, max: 10 }
+      flesch_reading_ease: { min: 60, max: 80 }
+    policymakers:
+      flesch_kincaid_grade: { min: 10, max: 12 }
+      flesch_reading_ease: { min: 50, max: 65 }
+    clinicians:
+      flesch_kincaid_grade: { min: 12, max: 14 }
+      flesch_reading_ease: { min: 40, max: 55 }
+    researchers:
+      flesch_kincaid_grade: { min: 12, max: 16 }
+      flesch_reading_ease: { min: 25, max: 50 }
+    plain_language_summary:
+      flesch_kincaid_grade: { min: 6, max: 10 }
+      flesch_reading_ease: { min: 60, max: 80 }
+
+  # Section-specific overrides
+  section_targets:
+    abstract:
+      flesch_kincaid_grade_max: 14
+    methods:
+      flesch_kincaid_grade_max: 18  # technical language acceptable
+    discussion:
+      flesch_kincaid_grade_max: 15
+
+  # Sentence-level thresholds
+  max_sentence_length_words: 40  # flag sentences over this
+  max_average_sentence_length: 25  # flag sections exceeding this average
+  max_polysyllable_percentage: 20  # percentage of words with 3+ syllables
+
+  # WARN-01 trigger
+  warn_if_grade_exceeds_target_by: 2  # WARN-01 if FK grade > target + 2
+
+plagiarism_screening:
+  # Overall similarity thresholds
+  similarity_acceptable: 15.0  # below this, no concern
+  similarity_elevated: 25.0  # above this, WARN-10 triggered
+  similarity_concerning: 40.0  # above this, manual review required
+
+  # Section-specific tolerances
+  methods_section_tolerance: 30.0  # higher tolerance for standard methods language
+  introduction_tolerance: 20.0
+  discussion_tolerance: 20.0
+  results_tolerance: 10.0  # results should be original
+
+  # Self-plagiarism / text recycling
+  self_plagiarism_warn: 15.0  # warn if >15% match with author's own prior work
+
+statistical_reporting:
+  # Minimum completeness score for statistical reporting
+  minimum_completeness_score: 70.0  # WARN-02 below this
+
+  # Required elements (must be present for any statistical analysis)
+  required_elements:
+    - "statistical_test_named"
+    - "sample_size_reported"
+    - "p_value_or_ci_reported"
+
+  # Recommended elements (should be present)
+  recommended_elements:
+    - "effect_size"
+    - "confidence_interval"
+    - "alpha_level"
+    - "test_statistic_value"
+    - "degrees_of_freedom"
+    - "software_identified"
+    - "missing_data_handling"
+    - "multiple_comparisons_adjustment"
+
+  # GRIM test
+  grim_fail_escalation_threshold: 2  # escalate to integrity if > 2 GRIM failures
+
+  # P-value patterns
+  suspicious_p_clustering_threshold: 0.70  # if >70% of p-values are between 0.01-0.05
+
+formatting:
+  # Word count tolerance
+  word_count_warn_over_limit: 1.05  # WARN-08 if > 5% over limit
+  word_count_hard_limit: 1.10  # flag if > 10% over limit
+
+  # Abstract word count
+  abstract_warn_over_limit: 1.10  # warn if > 10% over limit
+
+  # Keyword count
+  # Checked against journal-specific requirements in journal-requirements.yaml
+
+integrity_screening:
+  # Paper mill detection
+  tortured_phrase_count_warn: 2  # warn if ≥ 2 tortured phrases detected
+  tortured_phrase_count_escalate: 5  # escalate if ≥ 5
+
+  # Image integrity
+  image_similarity_threshold: 0.85  # perceptual hash similarity (0-1)
+  image_duplication_escalate: true  # always escalate image duplication
+
+  # Author profile
+  publication_rate_warn: 50  # warn if author has > 50 papers/year (unusual)
+
+  # Citation rings
+  mutual_citation_threshold: 5  # flag if same pair of authors cite each other > 5 times in one paper
+
+review_timeline:
+  # Expected review timelines (for tracking)
+  initial_decision_expected_weeks: 8
+  revision_decision_expected_weeks: 4
+  acceptance_to_online_expected_weeks: 2
+  overdue_reminder_after_weeks: 12

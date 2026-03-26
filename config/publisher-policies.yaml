@@ -1,0 +1,212 @@
+# Publisher AI Policies Database
+# Last updated: January 2026
+# IMPORTANT: Policies change frequently. Always verify current requirements
+# on the publisher's website before submission.
+
+publishers:
+  elsevier:
+    name: "Elsevier"
+    policy_url: "https://www.elsevier.com/about/policies-and-standards/the-use-of-generative-ai-and-ai-assisted-technologies-in-writing-for-elsevier"
+    last_verified: "2026-01-15"
+
+    authorship:
+      ai_as_author: false
+      rationale: "AI tools cannot meet authorship criteria; cannot take responsibility for submitted work"
+
+    disclosure:
+      required: true
+      location: "Dedicated section before References"
+      section_heading: "Declaration of Generative AI and AI-assisted technologies in the writing process"
+      format: "structured_statement"
+      must_include:
+        - "AI tool name and version"
+        - "Specific purpose of use"
+        - "Human oversight statement"
+        - "Accountability statement"
+      template: "templates/ai-disclosure-elsevier.md"
+
+    image_policy:
+      ai_generated_images: "prohibited"
+      exception: "AI-generated images permitted only if AI is part of the research methodology"
+      disclosure_required: true
+
+    peer_review:
+      ai_in_review: "prohibited"
+      rationale: "Confidentiality concerns; manuscripts must not be uploaded to AI tools"
+
+    exemptions:
+      - "Basic grammar and spell-checking tools"
+      - "Reference management software"
+
+  springer_nature:
+    name: "Springer Nature"
+    policy_url: "https://www.springernature.com/gp/editorial-policies/artificial-intelligence"
+    last_verified: "2026-01-15"
+
+    authorship:
+      ai_as_author: false
+      rationale: "AI tools cannot be credited as authors; cannot fulfill ICMJE criteria"
+
+    disclosure:
+      required: true
+      location: "Methods section or Acknowledgements (journal-dependent)"
+      format: "descriptive_statement"
+      must_include:
+        - "AI tool name, provider, and version"
+        - "How the tool was used"
+        - "Verification steps taken"
+        - "Responsibility statement"
+      template: "templates/ai-disclosure-springer.md"
+
+    image_policy:
+      ai_generated_images: "restricted"
+      non_research_images: "prohibited"
+      research_methodology: "permitted with disclosure in Methods"
+      disclosure_required: true
+
+    peer_review:
+      ai_in_review: "prohibited"
+      rationale: "Reviewers and editors must not upload manuscripts to generative AI tools"
+
+    exemptions:
+      - "Standard spell-checkers and grammar tools"
+
+  wiley:
+    name: "Wiley"
+    policy_url: "https://authorservices.wiley.com/ethics-guidelines/index.html"
+    last_verified: "2026-01-15"
+
+    authorship:
+      ai_as_author: false
+      rationale: "AI cannot fulfill authorship criteria; not permitted as author"
+
+    disclosure:
+      required: true
+      location: "Acknowledgements or dedicated AI disclosure section (journal-dependent)"
+      format: "descriptive_statement"
+      must_include:
+        - "AI tool identification with specifics"
+        - "Purposes of use"
+        - "Accountability statement"
+      template: "templates/ai-disclosure-wiley.md"
+
+    image_policy:
+      ai_generated_images: "restricted"
+      disclosure_required: true
+      note: "Check specific journal guidelines"
+
+    peer_review:
+      ai_in_review: "prohibited"
+      rationale: "Reviewers must not use AI to process confidential manuscripts"
+
+    exemptions:
+      - "Standard editing tools (spell-check, grammar)"
+
+    integrity_context: "11,300+ Hindawi papers retracted due to paper mill activity (2023-2024); heightened integrity vigilance"
+
+  taylor_francis:
+    name: "Taylor & Francis"
+    policy_url: "https://authorservices.taylorandfrancis.com/publishing-your-research/writing-your-paper/using-ai-tools/"
+    last_verified: "2026-01-15"
+
+    authorship:
+      ai_as_author: false
+      rationale: "AI technologies cannot be listed as authors"
+
+    disclosure:
+      required: true
+      location: "Separate AI disclosure statement (submitted during manuscript submission)"
+      format: "structured_form"
+      must_include:
+        - "AI tool name and version"
+        - "Purposes of use (checklist)"
+        - "Description of use"
+        - "Human oversight confirmation"
+      template: "templates/ai-disclosure-taylor-francis.md"
+
+    image_policy:
+      ai_generated_images: "restricted"
+      disclosure_required: true
+      note: "Varies by journal"
+
+    peer_review:
+      ai_in_review: "prohibited"
+      rationale: "AI must not be used to process manuscripts under review"
+
+    exemptions:
+      - "Basic writing aids (spell-check)"
+
+  sage:
+    name: "SAGE Publications"
+    policy_url: "https://us.sagepub.com/en-us/nam/ethics-responsibility"
+    last_verified: "2026-01-15"
+
+    authorship:
+      ai_as_author: false
+      rationale: "AI cannot be an author; all authors must be human"
+
+    disclosure:
+      required: true
+      location: "Acknowledgements or Methods section (journal-dependent)"
+      format: "descriptive_statement"
+      must_include:
+        - "AI tool name and version"
+        - "Specific purposes"
+        - "Verification statement"
+        - "Responsibility statement"
+      template: "templates/ai-disclosure-sage.md"
+
+    image_policy:
+      ai_generated_images: "restricted"
+      disclosure_required: true
+
+    peer_review:
+      ai_in_review: "prohibited"
+      rationale: "Confidentiality must be maintained; no manuscript content to AI tools"
+
+    exemptions:
+      - "Grammar and spell-checking tools"
+
+# Journal-specific overrides
+# These override the publisher-level defaults
+journal_overrides:
+  the_lancet:
+    publisher: "elsevier"
+    additional_requirements:
+      - "AI disclosure required in BOTH cover letter and manuscript"
+      - "Must identify which sections used AI assistance"
+      - "Particularly strict on AI in systematic reviews/meta-analyses"
+      - "Requires statement that no patient data was processed by AI"
+
+  cell:
+    publisher: "elsevier"
+    additional_requirements:
+      - "AI-assisted code must be disclosed with specific tool and version"
+      - "Requires reproducibility statement for AI-assisted analyses"
+
+  nature:
+    publisher: "springer_nature"
+    additional_requirements:
+      - "Disclosure must be in Methods section specifically"
+      - "AI-generated text must be clearly attributed"
+      - "Research involving AI-generated images requires specific ethics review"
+
+  bmj:
+    publisher: "bmj_publishing"  # Independent publisher
+    additional_requirements:
+      - "AI disclosure in the transparency declaration"
+      - "Describe AI's role at each stage of manuscript preparation"
+
+  jama:
+    publisher: "ama"  # American Medical Association
+    additional_requirements:
+      - "Detailed AI disclosure in Methods"
+      - "Authors must describe specific prompts used (where applicable)"
+      - "Requires statement on data privacy and AI tool terms of service"
+
+  plos_one:
+    publisher: "plos"
+    additional_requirements:
+      - "AI disclosure in cover letter and manuscript"
+      - "AI tools must be listed in Methods with version numbers"
+      - "Additional requirements for AI in systematic reviews"

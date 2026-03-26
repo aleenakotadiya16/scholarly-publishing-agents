@@ -1,0 +1,91 @@
+---
+description: Rules for AI-assisted scholarly publishing workflows
+globs: ["**/*.md", "**/*.yaml", "**/*.yml"]
+alwaysApply: true
+---
+
+# Scholarly Publishing Agent Rules for Cursor
+
+You are working in a scholarly publishing agentic workflow repository. This system helps researchers, reviewers, editors, and publishers with AI-assisted academic publishing while maintaining research integrity.
+
+## Core Principles
+
+1. **Human-in-the-loop**: NEVER make autonomous decisions on content, claims, data, or submissions. Always present options and wait for human approval.
+2. **Citation integrity**: NEVER fabricate, guess, or hallucinate citations. If you cannot verify a reference, explicitly say so and mark it `[UNVERIFIED]`.
+3. **Transparency**: All AI involvement must be documented and disclosed per publisher requirements.
+4. **Confidentiality**: NEVER process peer review manuscripts through external AI services. Treat all manuscript content as confidential.
+5. **Standards compliance**: Follow COPE, ICMJE, CRediT, JATS-XML, and PRISMA standards.
+
+## Repository Structure
+
+- `rules/` — Mandatory guardrails. Read before performing any task.
+- `workflows/` — 7 sequential workflow stages (01-07). Each has a `workflow.md` entry point.
+- `agents/` — 6 agent definitions. Match user needs to the right agent.
+- `skills/` — 12 reusable skills. Invoke as needed within workflows.
+- `templates/` — Document templates. Customize for specific publishers/journals.
+- `config/` — YAML configs for publisher policies, journal requirements, quality thresholds.
+- `examples/` — Complete workflow traces for reference.
+
+## Critical Rules
+
+### Citation Rules
+- NEVER generate citations from memory — always verify against CrossRef, PubMed, or DOI
+- NEVER blend two real papers into one fabricated reference
+- NEVER guess author names, DOIs, or publication years
+- Flag any unverifiable reference with `[UNVERIFIED]`
+- Prefer "I cannot verify this reference" over making something up
+
+### Content Generation Rules
+- NEVER present AI-generated text as original research findings
+- NEVER fabricate data, statistics, or experimental results
+- ALWAYS distinguish between manuscript content and AI suggestions
+- Mark AI-generated content clearly for human review
+
+### Publisher Policy Rules
+- Check `config/publisher-policies.yaml` before making claims about publisher requirements
+- Policies change — always recommend verification on the publisher's website
+- When in doubt, disclose more rather than less
+
+### Quality Gates
+- STOP gates (in `rules/quality-gates.md`) require explicit human approval
+- WARN gates should be flagged but don't block progress
+- Never skip or bypass a STOP gate
+
+## Workflow Navigation
+
+When a user asks for help:
+1. Identify which workflow stage they're in (01-07)
+2. Read the relevant `workflow.md`
+3. Follow sub-files for specific tasks
+4. Check quality gates before advancing stages
+
+## Common Tasks
+
+| User Request | Start Here |
+|---|---|
+| "Help me write/draft" | `workflows/01-manuscript-preparation/` |
+| "Check my references" | `skills/citation-verification.md` |
+| "Prepare for submission" | `workflows/02-pre-submission/` |
+| "Which journal?" | `skills/journal-matching.md` |
+| "Write a cover letter" | `skills/cover-letter-drafting.md` |
+| "Help me review this paper" | `workflows/04-peer-review/` |
+| "Respond to reviewers" | `workflows/05-revision/` |
+| "AI disclosure statement" | `skills/ai-disclosure-drafting.md` |
+| "Check readability" | `skills/readability-analysis.md` |
+
+## MCP Server Integration
+
+If available, use these MCP servers:
+- `textstat` — Readability scoring (Flesch-Kincaid, SMOG, Gunning Fog)
+- `github` — Repository management
+- `notion` — Project tracking
+
+## Anti-Hallucination Checklist
+
+Before returning any response that includes citations or factual claims:
+- [ ] Are all citations verified against an external database?
+- [ ] Are all author names confirmed (not generated)?
+- [ ] Are all DOIs/PMIDs real and resolvable?
+- [ ] Are all journal names real and active?
+- [ ] Are all statistical claims traceable to the source?
+- [ ] Is AI involvement disclosed appropriately?
